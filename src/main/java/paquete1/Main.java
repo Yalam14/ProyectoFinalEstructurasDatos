@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Grafo grafo = new Grafo(20); 
+        Grafo grafo = new Grafo(20);
 
         grafo.agregarConexion(0, 1, 65);    // León - Irapuato (Carretera Federal 45D)
         grafo.agregarConexion(0, 2, 55);    // León - Celaya (Carretera Federal 45D)
@@ -70,7 +70,13 @@ public class Main {
                 case 3:
                     // Calcular la ruta más corta
                     System.out.println("Introduce origen y destino (índices):");
-                    System.out.println("0: León, 1: Irapuato, 2: Celaya, 3: Salamanca, 4: San Luis de la Paz");
+                    System.out.println(
+                            "0: León, 1: Irapuato, 2: Celaya, 3: Salamanca, 4: San Luis de la Paz, "
+                            + "5: Guanajuato, 6: Silao, 7: San Francisco del Rincón, 8: Purísima del Rincón, "
+                            + "9: Manuel Doblado, 10: San Miguel de Allende, 11: Dolores Hidalgo, "
+                            + "12: Apaseo el Grande, 13: Querétaro, 14: Abasolo, 15: Lagos de Moreno, "
+                            + "16: Valle de Santiago, 17: Villagrán, 18: Apaseo el Alto, 19: San Felipe"
+                    );
                     int origen = scanner.nextInt();
                     int destino = scanner.nextInt();
                     int[][] matrizAdyacencia = new int[grafo.vertices][grafo.vertices];
