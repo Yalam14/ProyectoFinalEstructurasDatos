@@ -4,25 +4,32 @@
  */
 package paquete1;
 
+
+
+
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
 
 import javax.swing.*;
-import java.util.Map;
-import java.util.HashMap;
+import java.awt.*;
 import java.util.List;
 
 public class VisualizacionGrafo {
 
+    /**
+     * Muestra un grafo utilizando mxGraph.
+     * @param grafo Grafo ponderado a mostrar.
+     * @param titulo Título de la ventana de visualización.
+     */
     public static void mostrarGrafo(SimpleWeightedGraph<String, DefaultWeightedEdge> grafo, String titulo) {
         mxGraph jgxGraph = new mxGraph();
         Object parent = jgxGraph.getDefaultParent();
 
         jgxGraph.getModel().beginUpdate();
         try {
-            // Crear nodos con posiciones aleatorias
+            // Crear nodos con posiciones automáticas
             java.util.Map<String, Object> nodoMap = new java.util.HashMap<>();
             int x = 50, y = 50;
             for (String vertice : grafo.vertexSet()) {
@@ -45,15 +52,27 @@ public class VisualizacionGrafo {
             jgxGraph.getModel().endUpdate();
         }
 
-        // Mostrar grafo en la ventana
+        // Configurar la visualización del grafo
         mxGraphComponent graphComponent = new mxGraphComponent(jgxGraph);
+        graphComponent.setConnectable(false); // Deshabilitar conexiones
+        graphComponent.getGraph().setAllowDanglingEdges(false); // Deshabilitar aristas sueltas
+        graphComponent.setPreferredSize(new Dimension(800, 600)); // Configurar tamaño de la ventana
+
+        // Crear y mostrar la ventana
         JFrame frame = new JFrame(titulo);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.add(graphComponent);
+        frame.setLayout(new BorderLayout());
+        frame.add(graphComponent, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
     }
 
+    /**
+     * Construye y muestra un grafo a partir de una lista de conexiones y nombres de nodos.
+     * @param conexiones Lista de conexiones (aristas) del grafo.
+     * @param nombresNodos Arreglo con los nombres de los nodos.
+     * @param titulo Título de la ventana de visualización.
+     */
     public static void mostrarGrafo(List<Conexion> conexiones, String[] nombresNodos, String titulo) {
         // Crear un grafo ponderado
         SimpleWeightedGraph<String, DefaultWeightedEdge> grafo = new SimpleWeightedGraph<>(DefaultWeightedEdge.class);
@@ -76,5 +95,4 @@ public class VisualizacionGrafo {
         // Llamar al método que acepta el grafo construido
         mostrarGrafo(grafo, titulo);
     }
-
 }

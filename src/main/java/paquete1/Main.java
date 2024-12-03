@@ -7,17 +7,40 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Grafo grafo = new Grafo(5); // 5 localidades principales
+        Grafo grafo = new Grafo(20); 
 
-        // Agregar conexiones entre localidades basadas en carreteras y distancias
-        grafo.agregarConexion(0, 1, 65);    // León - Irapuato
-        grafo.agregarConexion(0, 2, 55);    // León - Celaya
-        grafo.agregarConexion(1, 3, 40);    // Irapuato - Salamanca
-        grafo.agregarConexion(2, 4, 70);    // Celaya - San Luis de la Paz
-        grafo.agregarConexion(3, 4, 50);    // Salamanca - San Luis de la Paz
+        grafo.agregarConexion(0, 1, 65);    // León - Irapuato (Carretera Federal 45D)
+        grafo.agregarConexion(0, 2, 55);    // León - Celaya (Carretera Federal 45D)
+        grafo.agregarConexion(1, 3, 40);    // Irapuato - Salamanca (Carretera Federal 45)
+        grafo.agregarConexion(2, 4, 70);    // Celaya - San Luis de la Paz (Carretera Federal 57)
+        grafo.agregarConexion(3, 4, 50);    // Salamanca - San Luis de la Paz (Carretera Federal 43)
+        grafo.agregarConexion(0, 5, 50);    // León - Guanajuato (Carretera Federal 110)
+        grafo.agregarConexion(5, 6, 20);    // Guanajuato - Silao (Carretera Federal 45)
+        grafo.agregarConexion(6, 1, 40);    // Silao - Irapuato (Carretera Federal 45D)
+        grafo.agregarConexion(0, 7, 25);    // León - San Francisco del Rincón (Carretera Estatal 47)
+        grafo.agregarConexion(7, 8, 5);     // San Francisco del Rincón - Purísima del Rincón (Carretera Estatal 47)
+        grafo.agregarConexion(7, 6, 45);    // San Francisco del Rincón - Silao (Carretera Estatal 110)
+        grafo.agregarConexion(0, 9, 70);    // León - Manuel Doblado (Carretera Estatal 45)
+        grafo.agregarConexion(1, 3, 25);    // Irapuato - Salamanca (Carretera Federal 45)
+        grafo.agregarConexion(3, 2, 40);    // Salamanca - Celaya (Carretera Federal 45)
+        grafo.agregarConexion(10, 11, 35);  // San Miguel de Allende - Dolores Hidalgo (Carretera Estatal 110)
+        grafo.agregarConexion(11, 5, 60);   // Dolores Hidalgo - Guanajuato (Carretera Estatal 110)
+        grafo.agregarConexion(2, 12, 10);   // Celaya - Apaseo el Grande (Carretera Federal 45)
+        grafo.agregarConexion(10, 13, 65);  // San Miguel de Allende - Querétaro (Carretera Federal 57D)
+        grafo.agregarConexion(1, 14, 30);   // Irapuato - Abasolo (Carretera Estatal 77)
+        grafo.agregarConexion(0, 15, 55);   // León - Lagos de Moreno (Jalisco) (Carretera Federal 80)
+        grafo.agregarConexion(3, 16, 25);   // Salamanca - Valle de Santiago (Carretera Estatal 43)
+        grafo.agregarConexion(3, 17, 15);   // Salamanca - Villagrán (Carretera Estatal 45)
+        grafo.agregarConexion(17, 18, 20);  // Villagrán - Apaseo el Alto (Carretera Estatal 45)
+        grafo.agregarConexion(4, 11, 45);   // San Luis de la Paz - Dolores Hidalgo (Carretera Estatal 110)
+        grafo.agregarConexion(11, 19, 50);  // Dolores Hidalgo - San Felipe (Carretera Estatal 110)
 
         String[] nombresNodos = {
-                "León", "Irapuato", "Celaya", "Salamanca", "San Luis de la Paz"
+            "León", "Irapuato", "Celaya", "Salamanca", "San Luis de la Paz",
+            "Guanajuato", "Silao", "San Francisco del Rincón", "Purísima del Rincón",
+            "Manuel Doblado", "San Miguel de Allende", "Dolores Hidalgo", "Apaseo el Grande",
+            "Querétaro", "Abasolo", "Lagos de Moreno", "Valle de Santiago", "Villagrán",
+            "Apaseo el Alto", "San Felipe"
         };
 
         Scanner scanner = new Scanner(System.in);
